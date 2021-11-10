@@ -9,10 +9,12 @@ const style = {
   outline: "none",
 };
 
-const Square = ({ value, onClick }) => (
-  <button style={style} onClick={onClick}>
-    {value}
-  </button>
-);
+const Square = (props) => {
+  return (
+    <button onClick={props.onClick} style={style}>
+      {props.value}
+    </button>
+  );
+};
 
 export default Square;
