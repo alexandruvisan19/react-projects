@@ -1,18 +1,21 @@
 import React from "react";
 
 const style = {
-  background: "lightblue",
-  border: "2px solid darkblue",
-  fontSize: "30px",
-  fontWeight: "800",
-  cursor: "pointer",
-  outline: "none",
+  background: "#fff",
+  border: "1px solid #999",
+  fontSize: "24px",
+  fontWeight: "bold",
+  lineHeight: "34px",
+  marginRight: "-1px",
+  marginTop: "-1px",
+  padding: "0",
+  textAlign: "center",
 };
 
-const Square = (props) => {
+const Square = ({ squares, onClick, idx }) => {
   return (
-    <button onClick={props.onClick} style={style}>
-      {props.value}
+    <button key={idx} style={style} onClick={() => onClick(idx)}>
+      {squares}
     </button>
   );
 };

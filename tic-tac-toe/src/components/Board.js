@@ -1,8 +1,8 @@
 import React from "react";
 import Square from "./Square";
+import { useState } from "react";
 
 const style = {
-  border: "4px solid darkblue",
   borderRadius: "5px",
   width: "250px",
   height: "250px",
@@ -11,12 +11,12 @@ const style = {
   gridTemplate: "repeat(3, 1fr) / repeat(3, 1fr)",
 };
 
-const Board = (props) => {
+const Board = ({ squares, onClick }) => {
   return (
     <div style={style}>
-      {props.squares.map((square, i) => (
-        <Square key={i} value={square} onClick={() => props.onClick(i)} />
-      ))}
+      {squares.map((square, idx) => {
+        return <Square squares={square} idx={idx} onClick={onClick} />;
+      })}
     </div>
   );
 };
