@@ -31,7 +31,6 @@ const Game = () => {
     }
     squares[i] = xIsNext ? "X" : "0";
     setHistory([...timeInHistory, squares]);
-    console.log(timeInHistory);
     setStepNumber(timeInHistory.length);
     setxIsNext(!xIsNext);
   };
