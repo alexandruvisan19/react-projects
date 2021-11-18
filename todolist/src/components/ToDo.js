@@ -1,61 +1,72 @@
-import React, { useState } from "react";
-import ToDos from "./ToDos";
-import Input from "./Input";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
+import styled from "styled-components";
 
-const ToDo = (props) => {
-  const [todos, setTodos] = useState([]);
-  const [countCheck, setCountCheck] = useState(0);
-  const [check, setCheck] = useState(false);
+const List = styled.li`
+  display: flex;
+  padding: 10px 5px;
+  align-items: center;
+  border-bottom: 1px solid #a2a2a29e;
+`;
 
-  const addToDoHandler = (todo) => {
-    setTodos((prevTodos) => {
-      return [...prevTodos, { name: todo, checked: check }];
-    });
-  };
+const ToDo = styled.span`
+  flex-grow: 1;
+`;
 
-  const checkOrNot = (boolean) => {
-    setCheck(boolean);
-  };
-
-  console.log(todos);
-
-  const handler = (i) => {
-    setTodos(todos.filter((value) => value !== todos[i]));
-    console.log(todos);
-    if (document.querySelector("li").classList.contains("todo-checked")) {
-      setCountCheck(countCheck - 1);
-    }
-  };
-
-  const clearHandler = () => {
-    setTodos([]);
-    setCountCheck(0);
-  };
-
+const Todo = (props) => {
+  const { id, todo, completed } = props.values;
   return (
-    <div>
-      <h1>Add a Todo</h1>
-      <Input onAddTodos={addToDoHandler} />
-      <div className="done-todos">
-        {countCheck >= 0 && `${countCheck}/${todos.length}`}
-      </div>
-      <ul>
-        {todos.map((todo, i) => (
-          <ToDos
-            countCheck={setCountCheck}
-            delete={() => handler(i)}
-            key={i}
-            value={todo.name}
-          />
-        ))}
-      </ul>
-      {todos.length >= 2 && (
-        <button onClick={clearHandler} type="button" className="clear">
-          clear all
-        </button>
+    <List>
+      <ToDo
+        style={{
+          textDecoration: completed ? "line-through" : "none",
+          color: completed ? "#a2a2a29e" : "black",
+        }}
+      >
+        {todo}
+      </ToDo>
+      {completed ? (
+        <CheckBoxIcon
+          sx={{
+            cursor: "pointer",
+            color: "#a2a2a29e",
+          }}
+          onClick={() =>
+            props.dispatch({
+              type: "COMPLETE_TODO",
+              id: id,
+              zIndex: "1000",
+            })
+          }
+        />
+      ) : (
+        <CheckBoxOutlineBlankIcon
+          sx={{
+            cursor: "pointer",
+            color: "#c4c4c4",
+            zIndex: "1000",
+          }}
+          onClick={() =>
+            props.dispatch({
+              type: "COMPLETE_TODO",
+              id: id,
+            })
+          }
+        />
       )}
-    </div>
+      <DeleteForeverRoundedIcon
+        sx={{ cursor: "pointer" }}
+        color="error"
+        onClick={() =>
+          props.dispatch({
+            type: "DELETE_TODO",
+            id: id,
+          })
+        }
+      />
+    </List>
   );
 };
 
-export default ToDo;
+export default Todo;

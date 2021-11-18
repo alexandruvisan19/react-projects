@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 
 * {
   padding: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   color: white;
   font-family: "Roboto", sans-serif;
   display: flex;
@@ -15,6 +15,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 2rem;
+  font-weight: 500;
 }
 
 h1 {
@@ -45,6 +46,14 @@ h3 {
   width: 100%;
 }
 
+.todoNum {
+  position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 5px;
+    padding: 5px;
+}
+
 .check-icon {
   position: absolute;
     left: -25px;
@@ -60,6 +69,10 @@ h3 {
 }
 
  ul li {
+   list-style: none;
+ }
+
+ ul button {
    display: inline-block;
  }
 
@@ -72,3 +85,23 @@ h3 {
  .done-todos{
    padding: 10px 0 0 0;
  }
+
+ /* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a2a2a29e; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a2a2a29e; 
+}
