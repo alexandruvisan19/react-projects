@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@561;700&display=swap');
+
+*, *:after, *:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Red Hat Text', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url(./images/pattern-hills.svg) bottom no-repeat, url(./images/bg-stars.svg) fixed center, linear-gradient(360deg, #231c2b, #211d2b, hsl(234, 17%, 12%));
+  background-size: 100%, auto, auto;
+  background-position-y: bottom;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+}
+
+footer a {
+  color: hsl(345, 95%, 68%)
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: auto, auto, auto;
+  }
+  footer div {
+    font-size: 16px;
+  }
+}
